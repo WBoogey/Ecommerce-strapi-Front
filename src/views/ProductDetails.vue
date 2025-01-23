@@ -1,19 +1,23 @@
 <template>
-  <div v-if="produit">
-    <img :src="formattedImageUrl(produit.image?.url)" alt="">
-  </div>
-  <div v-else>
-    chargements...
-  </div>
-  <h3>
-    {{produit.name}}
-  </h3>
-  <p>
-    {{produit.description}}
-  </p>
-  <p>
-    {{produit.price}}
-  </p>
+  <v-container class="d-flex justify-center mt-5">
+    <!-- Gestion du chargement -->
+    <v-card v-if="produit" max-width="344" class="mx-auto">
+      <!-- Image du produit -->
+      <v-img
+        :src="formattedImageUrl(produit.image?.url)"
+        alt="Image du produit"
+        aspect-ratio="16/9"
+      ></v-img>
+
+      <!-- Contenu de la Card -->
+      <v-card-title>{{ produit.name }}</v-card-title>
+      <v-card-text>
+        <p>{{ produit.description }}</p>
+        <p><strong>{{ produit.price }} euros</strong></p>
+      </v-card-text>
+    </v-card>
+    <p v-else class="text-center">Chargement des données...</p>
+  </v-container>
 </template>
 
 <script setup>

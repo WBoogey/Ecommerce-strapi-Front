@@ -1,17 +1,30 @@
 <template>
-<div class="produit-card">
-  <img :src="props?.image" :alt="props?.description">
-  <h3>
-    <slot name="name"></slot>
-  </h3>
-  <p>
-    <slot name="description"></slot>
-  </p>
-  <p>
-    <slot name="price"></slot>
-  </p>
-</div>
+  <v-card class="mx-auto my-3" max-width="344">
+    <!-- Image du produit -->
+    <v-img
+      :src="props?.image"
+      :alt="props?.description"
+      aspect-ratio="16/9"
+    ></v-img>
+
+    <!-- Contenu de la Card -->
+    <v-card-title>
+      <slot name="name"></slot>
+    </v-card-title>
+
+    <v-card-text>
+      <p>
+        <slot name="description"></slot>
+      </p>
+      <p>
+        <strong>
+          <slot name="price"></slot>
+        </strong>
+      </p>
+    </v-card-text>
+  </v-card>
 </template>
+
 <script setup>
 
 const props = defineProps({
